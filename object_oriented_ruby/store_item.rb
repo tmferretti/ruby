@@ -1,16 +1,35 @@
-class Employee
-  def initialize(input_first, input_last, input_salary, input_active)
-    @input_first = input_first
-    @input_last = input_last
-    @input_salary = input_salary
-    @input_active = input_active
+class Object
+  attr_reader :desc, :color, :price, :stock_status
+  attr_writer :input_price, :input_stock_status, :input_desc
+
+  def initialize(input_options)
+    @desc = input_options[:desc]
+    @color = input_options[:color]
+    @price = input_options[:price]
+    @stock_status = input_options[:stock_status]
   end
-  def print_info
-    p "#{@input_first} #{@input_last} makes #{@input_salary} per year."
+
+  def info
+    p "The #{desc} in question is #{color} colored, $#{price} and #{status_stock}."
+  end
+  
+  def status_stock
+    if @stock_status == true
+      return "is in stock"
+    else
+      return "is not in stock"
+    end
+  end
+
+  class Food < Object
+    attr_reader :shelf_life
+    def initialize(input_options)
+      super
+      @shelf_life = :shelf_life
+    end
   end
 end
 
-employee1 = Employee.new("Manila", "Campos", 80000, true)
-employee2 = Employee.new("Danillo", "Carter", 70000, false)
-employee1.print_info
-employee2.print_info
+object1 = Object.new(desc: "screwdriver", color: "black", price: 15.99, stock_status: false)
+
+object1.info
