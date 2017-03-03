@@ -1,8 +1,7 @@
-module StoreFront
-  class Object
+module StockItem  
+  class StoreItem
     attr_reader :desc, :color, :price, :stock_status
     attr_writer :input_price, :input_stock_status, :input_desc
-
     def initialize(input_options)
       @desc = input_options[:desc]
       @color = input_options[:color]
@@ -21,17 +20,5 @@ module StoreFront
         return "is not in stock"
       end
     end
-
-    class Food < Object
-      attr_reader :shelf_life
-      def initialize(input_options)
-        super
-        @shelf_life = :shelf_life
-      end
-    end
   end
 end
-
-object1 = StoreFront::Object.new(desc: "screwdriver", color: "black", price: 15.99, stock_status: false)
-
-object1.info
