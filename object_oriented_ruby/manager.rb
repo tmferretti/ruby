@@ -1,10 +1,10 @@
 
 
 module Manager
-  require './employee.rb'
   require './email_reportable.rb'
+  require './employee.rb'
   
-  class Manager < Actualize::Employee
+  class Manager < Employee::Employee
     attr_reader :employees
     include EmailReportable
 
@@ -14,9 +14,8 @@ module Manager
     end
 
     def give_all_raises
-      @employees.each do |employee|
+      employees.each do |employee|
         employee.give_annual_raise
-
       end
     end
 

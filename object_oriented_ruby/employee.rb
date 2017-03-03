@@ -1,6 +1,6 @@
-module Actualize
+module Employee
   class Employee
-    attr_reader :desc, :color, :price, :stock_status, :first_name, :last_name, :salary
+    attr_reader :desc, :color, :price, :active_status, :first_name, :last_name, :salary
     attr_writer :input_price, :input_stock_status
 
     def initialize(input_options)
