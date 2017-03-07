@@ -6,16 +6,42 @@
 # 6. CHALLENGE: Change the interface with better prompts, ASCII art, etc. Be as creative as you'd like!
 
 class Card
+  attr_reader :question, :answer
+  
+  def initialize(input_question, input_answer)
+    @question = input_question
+    @answer = input_answer
+  end
 end
 
 class Deck
+ 
+  def initialize(input_options)
+    @cards = []
+    input_options.each do |hash_question, hash_answer|
+      @cards << Card.new(hash_question, hash_answer)
+    end
+  end
+
+  def remaining_cards
+    @cards.length
+  end
+
+  def draw_card
+    @cards = @cards.shuffle
+    removed_card = @cards.pop
+    return removed_card
+  end
 end
+
 
 trivia_data = {
   "What is the capital of Illinois?" => "Springfield",
   "Is Africa a country or a continent?" => "Continent",
   "Tug of war was once an Olympic event. True or false?" => "True"
 }
+
+
 
 deck = Deck.new(trivia_data) # deck is an instance of the Deck class
 
